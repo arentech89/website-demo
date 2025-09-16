@@ -1,1 +1,4 @@
-console.log("Website is coming soon!");
+// script.js
+
+// Placeholder for future interactivity
+console.log("Welcome to Arentechnologies!");
