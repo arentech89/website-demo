@@ -33,16 +33,103 @@
       font-weight: bold;
     }
 
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
     nav a {
       color: #fff;
       margin-left: 1.5rem;
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s;
+      position: relative;
+      cursor: pointer;
     }
 
     nav a:hover {
       color: #cce6ff;
+    }
+
+    /* Dropdown container */
+    .dropdown-wrapper {
+      position: relative;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      cursor: pointer;
+      color: #fff;
+    }
+    .dropdown-wrapper a {
+      color: #fff;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0.2rem 0;
+    }
+    .dropdown-wrapper a:hover {
+      color: #cce6ff;
+    }
+
+    /* Dropdown menu */
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%; /* directly below the services link */
+      left: 0;
+      background-color: #fff;
+      color: #000;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(97, 29, 29, 0.15);
+      padding: 0.5rem 1rem;
+      min-width: 280px;
+      max-width: calc(100vw - 40px); /* Prevent dropdown from going beyond viewport */
+      white-space: normal;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      z-index: 1000;
+      user-select: none;
+    }
+
+    .dropdown li {
+      list-style: none;
+      padding: 0.5rem 1rem;
+      white-space: normal; /* allow text wrap */
+      word-break: break-word;
+      position: relative;
+    }
+    .dropdown li:hover {
+      background-color: #0073b1;
+      color: #fff;
+    }
+
+    /* Show dropdown when hovering over wrapper */
+    .dropdown-wrapper:hover .dropdown,
+    .dropdown-wrapper.active .dropdown {
+      display: block;
+    }
+
+    /* "raji" tooltip next to ramya */
+    .dropdown li span {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      color: #000;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      padding: 0.5rem 1rem;
+      min-width: 180px;
+      max-width: calc(100vw - 40px);
+      box-sizing: border-box;
+      white-space: normal;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      z-index: 1000;
+      user-select: none;
+    }
+    .dropdown li:hover span {
+      display: inline-block;
     }
 
     .container {
@@ -79,12 +166,21 @@
 
       nav {
         margin-top: 1rem;
-        display: flex;
         flex-direction: column;
+        align-items: flex-start;
       }
 
-      nav a {
+      nav a, .dropdown-wrapper {
         margin: 0.5rem 0;
+      }
+
+      .dropdown {
+        position: static;
+        margin-left: 0;
+        box-shadow: none;
+        background-color: #f9f9f9;
+        padding-left: 1rem;
+        min-width: auto;
       }
     }
   </style>
@@ -94,7 +190,19 @@
     <div class="logo">Aren Technologies Ltd</div>
     <nav>
       <a href="#home">Home</a>
-      <a href="#services">Services</a>
+
+      <div class="dropdown-wrapper" id="services-wrapper">
+        <a href="#services" class="services-link">Services</a>
+        <ul class="dropdown" id="services-dropdown">
+          <li>
+            Data Science
+          </li>
+          <li>Financial analysis: Commodities, forex, equity</li>
+          <li>Cloud deploy</li>
+          <li>Automate streamline and provide financial reports</li>
+        </ul>
+      </div>
+
       <a href="#contact">Contact Us</a>
       <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
     </nav>
@@ -104,7 +212,7 @@
     <section id="home">
       <h2>Welcome to Aren Technologies Ltd</h2>
       <p>
-         We deliver expert solutions in data science, financial analysis across commodities, forex, and equity markets, cloud deployment, and automated financial reporting. Our goal is to streamline your operations and empower data-driven decisions, ensuring your business stays competitive and future-ready.
+        We deliver expert solutions in data science, financial analysis across commodities, forex, and equity markets, cloud deployment, and automated financial reporting. Our goal is to streamline your operations and empower data-driven decisions, ensuring your business stays competitive and future-ready.
       </p>
     </section>
 
@@ -129,5 +237,17 @@
   <footer>
     &copy; 2025 Aren Technologies Ltd. All rights reserved.
   </footer>
+
+  <script>
+    // JS to handle hover better for dropdown (optional but improves reliability)
+    const wrapper = document.getElementById('services-wrapper');
+    wrapper.addEventListener('mouseenter', () => {
+      wrapper.classList.add('active');
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+      wrapper.classList.remove('active');
+    });
+  </script>
 </body>
 </html>
