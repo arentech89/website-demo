@@ -64,6 +64,23 @@
       color: #0073b1;
     }
 
+    /* Background image for #home section */
+    #home {
+      position: relative;
+      background: url('https://source.unsplash.com/1600x900/?technology,data') no-repeat center center;
+      background-size: cover;
+      color: white;
+      padding: 4rem 2rem;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    #home .overlay {
+      background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for text readability */
+      padding: 2rem;
+      border-radius: 8px;
+    }
+
     footer {
       background-color: #333;
       color: #fff;
@@ -102,10 +119,12 @@
 
   <div class="container">
     <section id="home">
-      <h2>Welcome to Aren Technologies Ltd</h2>
-      <p>
-         We deliver expert solutions in data science, financial analysis across commodities, forex, and equity markets, cloud deployment, and automated financial reporting. Our goal is to streamline your operations and empower data-driven decisions, ensuring your business stays competitive and future-ready.
-      </p>
+      <div class="overlay">
+        <h2>Welcome to Aren Technologies Ltd</h2>
+        <p>
+          We deliver expert solutions in data science, financial analysis across commodities, forex, and equity markets, cloud deployment, and automated financial reporting. Our goal is to streamline your operations and empower data-driven decisions, ensuring your business stays competitive and future-ready.
+        </p>
+      </div>
     </section>
 
     <section id="services">
@@ -113,8 +132,8 @@
       <ul>
         <li>Data Science</li>
         <li>Financial analysis: Commodities, forex, equity</li>
-        <li>Cloud deploy</li>
-        <li>Automate streamline and provide financial reports</li>
+        <li>Cloud deployment</li>
+        <li>Automation and financial reporting</li>
       </ul>
     </section>
 
