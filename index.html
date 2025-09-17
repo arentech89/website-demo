@@ -87,6 +87,11 @@
         margin: 0.5rem 0;
       }
     }
+
+    /* Hide services list by default */
+    #services ul {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -94,7 +99,7 @@
     <div class="logo">Aren Technologies Ltd</div>
     <nav>
       <a href="#home">Home</a>
-      <a href="#services">Services</a>
+      <a href="#services" id="nav-services">Services</a>
       <a href="#contact">Contact Us</a>
       <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
     </nav>
@@ -129,5 +134,23 @@
   <footer>
     &copy; 2025 Aren Technologies Ltd. All rights reserved.
   </footer>
+
+  <script>
+    const navServices = document.getElementById('nav-services');
+    const servicesList = document.querySelector('#services ul');
+
+    navServices.addEventListener('mouseover', () => {
+      servicesList.style.display = 'block';
+    });
+
+    navServices.addEventListener('mouseout', () => {
+      servicesList.style.display = 'none';
+    });
+
+    // Optional: Hide when mouse leaves the service list
+    document.querySelector('#services').addEventListener('mouseleave', () => {
+      servicesList.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
