@@ -2,102 +2,196 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact Us - Aren Technologies Ltd</title>
   <style>
-    * {
+    /* Reset and basics */
+    *, *::before, *::after {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      background-color: #f4f4f4;
+      background-color: #f9fafb;
       color: #333;
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    /* Container for content */
+    .container {
+  max-width: 900px;
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  /* Blue shadow instead of gray */
+  box-shadow: 0 8px 20px rgba(0, 115, 177, 0.3); /* blue with 30% opacity */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 2rem 2rem 3rem;
+}
+
+
+    /* Back button */
+    #back-button {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      border: none;
+      background-color: #0073b1;
+      color: white;
+      border-radius: 6px;
+      font-size: 1rem;
+      z-index: 1100;
+      box-shadow: 0 3px 6px rgba(0,115,177,0.4);
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    #back-button:hover {
+      background-color: #005a85;
     }
 
     header {
-      background-color: #0073b1;
-      color: #fff;
-      padding: 1rem 2rem;
       text-align: center;
-      border-radius: 8px;
       margin-bottom: 2rem;
+      
     }
-
-    h1 {
-      margin-bottom: 0.5rem;
+    header h1 {
+      font-weight: 700;
+      font-size: 2.4rem;
+      color: #0073b1;
+      margin-bottom: 0.3rem;
     }
-
-    section {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-
-    p {
-      margin-bottom: 1rem;
+    header p {
+      color: #555;
       font-size: 1.1rem;
+      margin-top: 0;
     }
 
-    a {
+    /* Contact content wrapper */
+    .contact-info-map {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* Contact info box */
+    .contact-info {
+      flex: 1 1 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.2rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.1rem;
+      color: #444;
+    }
+    .contact-item strong {
+      min-width: 90px;
       color: #0073b1;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 2rem;
-      color: #666;
-      font-size: 0.9rem;
-    }
-
-    nav {
-      margin-top: 1rem;
-      text-align: center;
-    }
-
-    nav a {
-      margin: 0 1rem;
-      color: #0073b1;
-      text-decoration: none;
       font-weight: 600;
     }
-
-    nav a:hover {
+    .contact-item a {
+      color: #0073b1;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .contact-item a:hover {
+      color: #005a85;
       text-decoration: underline;
+    }
+
+    /* Google map */
+    .map-container {
+      flex: 1 1 320px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      height: 320px;
+      min-width: 320px;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      padding: 1.5rem 0;
+      font-size: 0.9rem;
+      color: #888;
+      text-align: center;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .contact-info-map {
+        flex-direction: column;
+      }
+      .map-container, .contact-info {
+        min-width: auto;
+        height: 280px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Contact Us</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="contact.html">Contact Us</a>
-    </nav>
-  </header>
-<button onclick="history.back()" style="margin-bottom: 1rem; padding: 0.5rem 1rem; cursor: pointer; border: none; background-color: #0073b1; color: white; border-radius: 4px; font-size: 1rem;">
-    ← Back
-  </button>
-  <section>
-    <p><strong>Email:</strong> <a href="mailto:info@arentech.co.uk">info@arentech.co.uk</a></p>
-    <p><strong>Phone:</strong> +44 1231231231</p>
-    <p><strong>Address:</strong> 124 City Road, London, England, EC1V 2NX</p>
-  </section>
+
+  <button id="back-button" onclick="history.back()">← Back</button>
+
+  <div class="container">
+    <header>
+      <h1>Contact Us</h1>
+      <p>We're here to help. Reach out to us anytime!</p>
+    </header>
+
+    <div class="contact-info-map">
+      <div class="contact-info">
+        <div class="contact-item">
+          <strong>Email:</strong>
+          <a href="mailto:info@arentech.co.uk">info@arentech.co.uk</a>
+        </div>
+        <div class="contact-item">
+          <strong>Phone:</strong>
+          <a href="tel:+441231231231">+44 1231 231231</a>
+        </div>
+        <div class="contact-item">
+          <strong>Address:</strong>
+          <span>124 City Road, London, England, EC1V 2NX</span>
+        </div>
+      </div>
+
+      <div class="map-container">
+        <!-- Google Maps Embed iframe -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19803.24587581428!2d-0.09787674798643715!3d51.52747633911651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b33336d01db%3A0x8c775aee07ad47e!2s124%20City%20Rd%2C%20London%20EC1V%202NX%2C%20UK!5e0!3m2!1sen!2sus!4v1695474812250!5m2!1sen!2sus"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Aren Technologies Ltd Location on Map"
+        ></iframe>
+      </div>
+    </div>
+  </div>
 
   <footer>
     &copy; 2025 Aren Technologies Ltd. All rights reserved.
   </footer>
+
 </body>
 </html>
